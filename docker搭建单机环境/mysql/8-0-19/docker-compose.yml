@@ -1,0 +1,13 @@
+version: "3.1"
+services:
+  mysql:      #服务的名称
+    restart: always  #跟随docker自动启动
+    image: daocloud.io/library/mysql:8.0.19   #镜像地址
+    container_name: mysql   #容器名称
+    ports:
+      - 3306:3306   #指定端口映射
+    environment:
+      MYSQL_ROOT_PASSWORD: felixwc #root账号密码
+      TZ: Asia/Shanghai                         #指定时区
+    volumes:
+      - ./data:/var/lib/mysql  #数据卷映射

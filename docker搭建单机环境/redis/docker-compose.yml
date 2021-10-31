@@ -1,0 +1,13 @@
+version: "3.1"
+services:
+  redis1:
+    image: daocloud.io/library/redis:5.0.7
+    restart: always
+    container_name: redis1
+    environment:
+      - TZ=Asia/shanghai
+    ports:
+      - 6379:6379
+    volumes:
+      - ./conf/redis.conf:/data/redis.conf
+    command: ["redis-server","/data/redis.conf"]

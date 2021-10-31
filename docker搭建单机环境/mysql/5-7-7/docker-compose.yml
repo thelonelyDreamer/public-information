@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+ mysql:
+  container_name: mysql5
+  image: daocloud.io/library/mysql:5.7.7
+  restart: always
+  command:
+   - --character-set-server=utf8mb4
+   - --collation-server=utf8mb4_general_ci
+   - --default-time_zone=+8:00
+  environment:
+   TZ: Asis/Shanghai
+   MYSQL_ROOT_PASSWORD: wangchao2303
+  ports:
+   - "3307:3306"
+  volumes:
+   - ./data/mysql:/var/lib/mysql

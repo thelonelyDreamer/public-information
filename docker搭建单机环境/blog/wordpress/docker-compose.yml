@@ -1,0 +1,21 @@
+version: "3"
+services:
+   mysql:
+     image: mysql:5.6
+     ports:
+       - "3306:3306"
+     environment:
+       - "MYSQL_ROOT_PASSWORD=123"
+       - "MYSQL_PASSWORD=123"
+       - "MYSQL_USER=tom"
+       - "MYSQL_DATABASE=wordpress"
+   wordpress:
+     image: wordpress
+     ports:
+       - "80:80"
+     environment:
+       - "WORDPRESS_DB_NAME=wordpress"
+       - "WORDPRESS_DB_USER=tom"
+       - "WORDPRESS_DB_PASSWORD=123"
+       - "WORDPRESS_DB_HOST=mysql"
+

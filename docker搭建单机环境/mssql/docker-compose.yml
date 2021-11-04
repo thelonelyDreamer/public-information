@@ -1,0 +1,44 @@
+version: '3'
+services:
+  sqlserver:
+    image: "microsoft/mssql-server-linux:latest"
+    container_name: "sqlserver"
+    ports:
+      - "1433:1433"
+    volumes:
+      - "需要填写:/var/opt/mssql"
+      - "需要填写:/etc/localtime"
+    restart: always
+    environment:
+      #接受最终用户许可协议
+      - ACCEPT_EULA=Y
+      #SA用户密码
+      - SA_PASSWORD=felixwc1234
+      
+networks:
+  default:
+    external: true
+    name: mynet
+    
+version: '3'
+services:
+  sqlserver:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    container_name: "sqlserver"
+    ports:
+      - "1433:1433"
+    volumes:
+      - "需要填写:/var/opt/mssql"
+      - "需要填写:/etc/localtime"
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=felixwc1234
+networks:
+  default:
+    external: true
+    name: mynet
+    
+sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=felixwc1234" \
+   -p 1433:1433 --name sql1 -h sql1 \
+   -d mcr.microsoft.com/mssql/server:2019-latest

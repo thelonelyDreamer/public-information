@@ -11,3 +11,8 @@ services:
     volumes:
       - ./conf/redis.conf:/data/redis.conf
     command: ["redis-server","/data/redis.conf"]
+    
+networks:
+  default:
+    external: true
+    name: mynet

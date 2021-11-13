@@ -6,3 +6,7 @@ services:
     container_name: zookeeper
     ports:
       - 2181:2181
+networks:
+  default:
+    external: true
+    name: mynet
